@@ -6,6 +6,7 @@ def minisat_to_csv(dirname):
   all_results = []
   try:
     for dir in os.listdir(dirname):
+      results = []
       for filename in os.listdir(dirname+dir):
         i += 1
         fname = filename.split('/')[-1]
@@ -35,10 +36,19 @@ def minisat_to_csv(dirname):
               # print(str(t))
               res = [fname, N, K, R, L, Result, t]
               all_results.append(res)
+              results.append(res)
+              print(res)
+          os.remove('out.txt')
         except:
           print("Error: Skipped {}".format(filename))
           pass
         # break
+      output_path = "/content/drive/MyDrive/y3s2/CS4244 Project/output_" + dir +".csv"
+      title = ['filename', 'N', 'K', "R", 'L', 'Result','Time']
+      print("Writing csv to " + output_path)
+      df = pd.DataFrame(all_results, columns=title) 
+      df.to_csv(output_path)
+
   except KeyboardInterrupt:
     output_path = "/content/drive/MyDrive/y3s2/CS4244 Project/output.csv"
     title = ['filename', 'N', 'K', "R", 'L', 'Result','Time']
