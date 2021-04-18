@@ -5,10 +5,11 @@ import pandas as pd
 from pycryptosat import Solver
 import mySATSolver
 
+SAT_TIME_LIMIT = 600
 
 def run_cryptosat(filename):
     _, _, clauses = mySATSolver.read_input(filename)
-    s = Solver()
+    s = Solver(time_limit=SAT_TIME_LIMIT)
     for c in clauses:
         s.add_clause(c)
     start_time = time.time()

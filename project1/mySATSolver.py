@@ -244,7 +244,7 @@ def conflict_analysis():
     if debug: print("    return learned_clause, backtrack_level:", learned_clause, backtrack_level)
     return frozenset(learned_clause), backtrack_level
 
-def r_two_clause_heuristic():
+def two_clause_heuristic():
     '''
     Returns: 
         int: proposition with maximum occurrences in 2-clauses, i.e., 
@@ -264,40 +264,40 @@ def r_two_clause_heuristic():
     variables = [key for key, value in unassigned_count.items() if value == maxValue]
     return random.choice(variables) * random.choice([1,-1])
 
-def two_clause_heuristic():
-    '''
-    Returns: 
-        int: proposition with maximum occurrences in 2-clauses, i.e., 
-            clauses with two literals, and break ties randomly.
-    '''
-    unassigned = []
-    unassigned_lit = {}
-    for clause in clauses.union(learned_clauses):
-        state = get_clause_state(clause)
-        if state == TWO_CLAUSE:
-            for literal in clause:
-                if get_literal_value(literal) == -1:
-                    unassigned.append(abs(literal))
-                    if literal not in unassigned_lit:
-                        unassigned_lit[literal] = 0
-                    unassigned_lit[literal] += 1
-    if len(unassigned) == 0:
-        return random_heuristic()
-    unassigned_count = Counter(unassigned)
-    maxValue = max(unassigned_count.values())
-    variables = [key for key, value in unassigned_count.items() if value == maxValue]
+# def not_rand_two_clause_heuristic():
+#     '''
+#     Returns: 
+#         int: proposition with maximum occurrences in 2-clauses, i.e., 
+#             clauses with two literals, and break ties randomly.
+#     '''
+#     unassigned = []
+#     unassigned_lit = {}
+#     for clause in clauses.union(learned_clauses):
+#         state = get_clause_state(clause)
+#         if state == TWO_CLAUSE:
+#             for literal in clause:
+#                 if get_literal_value(literal) == -1:
+#                     unassigned.append(abs(literal))
+#                     if literal not in unassigned_lit:
+#                         unassigned_lit[literal] = 0
+#                     unassigned_lit[literal] += 1
+#     if len(unassigned) == 0:
+#         return random_heuristic()
+#     unassigned_count = Counter(unassigned)
+#     maxValue = max(unassigned_count.values())
+#     variables = [key for key, value in unassigned_count.items() if value == maxValue]
 
-    v = random.choice(variables)
-    if abs(v) not in unassigned_lit:
-        lit = -abs(v)
-    elif -abs(v) not in unassigned_lit:
-        lit = abs(v)
-    elif unassigned_lit[abs(v)] > unassigned_lit[-abs(v)]:
-        lit = abs(v)
-    else:
-        lit = -abs(v) 
-    # return random.choice(variables) * random.choice([1,-1])
-    return lit
+#     v = random.choice(variables)
+#     if abs(v) not in unassigned_lit:
+#         lit = -abs(v)
+#     elif -abs(v) not in unassigned_lit:
+#         lit = abs(v)
+#     elif unassigned_lit[abs(v)] > unassigned_lit[-abs(v)]:
+#         lit = abs(v)
+#     else:
+#         lit = -abs(v) 
+#     # return random.choice(variables) * random.choice([1,-1])
+#     return lit
 
 def DLCS_heuristic():
     '''
@@ -636,9 +636,9 @@ def run_experiment(path, show_result=False):
     return row
 
 
-heuristics = {"random": random_heuristic, "rand_two_clause": r_two_clause_heuristic, "two_clause": two_clause_heuristic, "max_freq": max_freq_heuristic, "DLCS": DLCS_heuristic, "VSIDS": vsids_heuristic} #, "VSADS": vsads_heuristic}
+heuristics = {"random": random_heuristic, "two_clause": two_clause_heuristic, "max_freq": max_freq_heuristic, "DLCS": DLCS_heuristic, "VSIDS": vsids_heuristic} #, "VSADS": vsads_heuristic} #"two_clause": two_clause_heuristic, 
 heuristics_list = [h for h in heuristics.keys()]
-timeout_limit = 6 # 10 mins
+timeout_limit = 600 # 10 mins
 is_known_solution = False
 output_path = "result/"
 
