@@ -1,0 +1,55 @@
+
+Input file: /content/CS4244_project/unsat/UUF150.645.100/uuf150-045.cnf, 
+Clause: 644, 
+Variables: 150, 
+Time: 150.217059, 
+Heuristic: two_clause_heuristic, 
+Branches: 2304, 
+Implication: 81000, 
+Learned clauses: 2140，
+Result: UNSAT (Correct), 
+Assigmenent: None
+
+Input file: /content/CS4244_project/unsat/UUF150.645.100/uuf150-077.cnf, 
+Clause: 645, 
+Variables: 150, 
+Time: 138.23394, 
+Heuristic: two_clause_heuristic, 
+Branches: 2251, 
+Implication: 77539, 
+Learned clauses: 2083，
+Result: UNSAT (Correct), 
+Assigmenent: None
+
+Input file: /content/CS4244_project/unsat/UUF150.645.100/uuf150-042.cnf, 
+Clause: 645, 
+Variables: 150, 
+Time: 192.213594, 
+Heuristic: two_clause_heuristic, 
+Branches: 2700, 
+Implication: 94063, 
+Learned clauses: 2512，
+Result: UNSAT (Correct), 
+Assigmenent: None
+
+Input file: /content/CS4244_project/unsat/UUF150.645.100/uuf150-084.cnf, 
+Clause: 645, 
+Variables: 150, 
+Time: 271.127084, 
+Heuristic: two_clause_heuristic, 
+Branches: 3098, 
+Implication: 110322, 
+Learned clauses: 2874，
+Result: UNSAT (Correct), 
+Assigmenent: None
+
+Input file: /content/CS4244_project/unsat/UUF150.645.100/uuf150-038.cnf, 
+Clause: 645, 
+Variables: 150, 
+Time: 636.263113, 
+Heuristic: two_clause_heuristic, 
+Branches: 4736, 
+Implication: 172899, 
+Learned clauses: 4433，
+Result: UNSAT (Correct), 
+Assigmenent: None
