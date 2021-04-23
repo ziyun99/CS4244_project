@@ -536,7 +536,7 @@ def print_and_write_output(sat_result):
     
     w = "\nInput file: {}, \nClause: {}, \nVariables: {}, \nTime: {}, \nHeuristic: {}, \nBranches: {}, \nImplication: {}, \nLearned clauses: {}, \nResult: {} ({}), \nAssigmenent: {}\n".format(input_cnf, num_clauses, num_vars, time_taken, heuristic.__name__, branching, implication_count, len(learned_clauses), sat_result, verified_result, output_assignments)
     print(w)
-    
+
     output_file = output_path
     if not os.path.exists(output_file):
         os.mkdir(output_file)

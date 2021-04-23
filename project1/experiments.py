@@ -9,7 +9,7 @@ SAT_TIME_LIMIT = 600
 
 def run_cryptosat(filename):
     _, _, clauses = mySATSolver.read_input(filename)
-    s = Solver(time_limit=SAT_TIME_LIMIT)
+    s = Solver()
     for c in clauses:
         s.add_clause(c)
     start_time = time.time()
